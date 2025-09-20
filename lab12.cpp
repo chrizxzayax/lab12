@@ -50,8 +50,14 @@ int main(){
     double avge = accumulate(temperatures.begin(), temperatures.end(), 0.0) / DAYS;
     cout << "The average monthly temperature is: " << avge << endl;
 
-    array(double, DAYS> sorted_temps = temperatures; // copy original array)
-        sort(sortedTemps.begin(), sorted_temps.end());
+    array<double, DAYS> sorted_temps = temperatures; // copy original array
+    sort(sorted_temps.begin(), sorted_temps.end());
+    cout << "Sorted temperatures: ";
+    for (const auto& t : sorted_temps) cout << t << " ";
+    cout << endl;
+
+    array<double, DAYS> cdsnap;
+    cdsnap
 
     return 0;
 }
