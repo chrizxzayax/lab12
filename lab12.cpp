@@ -44,6 +44,14 @@ int main(){
     cout << "temperature on lets say the 15th day: " << temperatures[14] << endl;
 
     auto minmax = minmax_element(temperatures.begin(), temperatures.end());
+    cout << "Minimum temperature: " << *minmax.first << endl;
+    cout << "Maximum temperature: " << *minmax.second << endl;
+
+    double avge = accumulate(temperatures.begin(), temperatures.end(), 0.0) / DAYS;
+    cout << "The average monthly temperature is: " << avge << endl;
+
+    array(double, DAYS> sorted_temps = temperatures; // copy original array)
+        sort(sortedTemps.begin(), sorted_temps.end());
 
     return 0;
 }
