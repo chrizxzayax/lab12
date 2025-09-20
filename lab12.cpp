@@ -13,8 +13,37 @@ using namespace std;
 
 constexpr size_t DAYS = 30;
 
-void display(const array<double, DAYS>& arr) {
-    for (size_t i = 0; i < arr.size(); ++i) {
-        cout << "Day " << (i + 1) << ": " << arr[i] << "°C" << endl;
+void display(const array<double, DAYS>& temps) {
+    cout << "Temperatures: ";
+
+    for (const auto& t : temps) cout << t << " ";
+    cout << endl;
+
+}
+
+int main(){
+
+    array<double, DAYS> temperatures;
+
+    ifstream fin("temp.txt");
+    if(!fin){
+        cerr << "Error opening file" << endl;
+        return 1;
     }
+
+    for(size_t i = 0; i < DAYS && fin; ++i){
+        fin >> temperatures[i];
+    }
+    fin.close();
+
+    cout << "the array's size: " << temperatures.size() << endl;
+    display(temperatures);
+
+    cout << "First day's temperature: " << temperatures.front() << endl;
+    cout << "Last day's temperature: " << temperatures.back() << endl;
+    cout << "temperature on lets say the 15th day: " << temperatures[14] << endl;
+
+    auto minmax = minmax_element(temperatures.begin(), temperatures.end());
+
+    return 0;
 }
