@@ -57,7 +57,18 @@ int main(){
     cout << endl;
 
     array<double, DAYS> cdsnap;
-    cdsnap
+    cdsnap.fill(-10.0); // fill with -10.0
+    cout << "colds snap simulationarray: ";
+    for(const auto& t : cdsnap) cout << t << " ";
+    cout << endl;
+
+    //pointer directly to the array data
+    cout << "is the array for temperatures empty?" << (temperatures.empty() ? " yes" : " no") << endl;
+    cout << "Now a direct access to array data: ";
+    double* dataPtr = temperatures.data();
+    for(size_t i = 0; i < temperatures.size(); ++i)
+        cout << *(dataPtr + i) << " ";
+    cout << endl;
 
     return 0;
 }
