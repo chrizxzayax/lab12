@@ -61,7 +61,7 @@ int main(){
 
     array<double, DAYS> cdsnap;// cold snap simulation
     cdsnap.fill(-10.0); // fill with -10.0
-    cout << "colds snap simulationarray: ";
+    cout << "cold's snap simulation array: ";
     for(const auto& t : cdsnap) cout << t << " ";
     cout << endl;
 
@@ -73,7 +73,7 @@ int main(){
     cout << endl;
 
     // check if the array is empty
-    cout << "is the array for temperatures empty?" << (temperatures.empty() ? " yes" : " no") << endl;
+    cout << "is the array for temperatures empty? " << (temperatures.empty() ? " yes" : " no") << endl;
     cout << "Now a direct access to array data: ";    //pointer directly to the array data
     double* dataPtr = temperatures.data();
     for(size_t i = 0; i < temperatures.size(); ++i)
