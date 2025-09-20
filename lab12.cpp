@@ -23,7 +23,7 @@ void display(const array<double, DAYS>& temps) {
 
 int main(){
 
-    array<double, DAYS> temperatures;
+    array<double, DAYS> temperatures{}; // initialize all to 0.0
 
     ifstream fin("temp.txt");
     if(!fin){
@@ -35,7 +35,7 @@ int main(){
         fin >> temperatures[i];
     }
     fin.close();
-
+    // demonstrate std array members and algorithms
     cout << "the array's size: " << temperatures.size() << endl;
     display(temperatures);
 
@@ -43,6 +43,8 @@ int main(){
     cout << "Last day's temperature: " << temperatures.back() << endl;
     cout << "temperature on lets say the 15th day: " << temperatures[14] << endl;
 
+
+    // finding the min and max temperature
     auto minmax = minmax_element(temperatures.begin(), temperatures.end());
     cout << "Minimum temperature: " << *minmax.first << endl;
     cout << "Maximum temperature: " << *minmax.second << endl;
@@ -50,21 +52,29 @@ int main(){
     double avge = accumulate(temperatures.begin(), temperatures.end(), 0.0) / DAYS;
     cout << "The average monthly temperature is: " << avge << endl;
 
+    //sort n display the sorted array
     array<double, DAYS> sorted_temps = temperatures; // copy original array
     sort(sorted_temps.begin(), sorted_temps.end());
     cout << "Sorted temperatures: ";
     for (const auto& t : sorted_temps) cout << t << " ";
     cout << endl;
 
-    array<double, DAYS> cdsnap;
+    array<double, DAYS> cdsnap;// cold snap simulation
     cdsnap.fill(-10.0); // fill with -10.0
     cout << "colds snap simulationarray: ";
     for(const auto& t : cdsnap) cout << t << " ";
     cout << endl;
 
-    //pointer directly to the array data
+    //swap the arrays given they are the same size
+    cout << "swapping the two arrays now..." << endl;
+    sorted_temps.swap(cdsnap);
+    cout << "sorted temps after swap: ";
+    for (const auto& t : sorted_temps) cout << t << " ";
+    cout << endl;
+
+    // check if the array is empty
     cout << "is the array for temperatures empty?" << (temperatures.empty() ? " yes" : " no") << endl;
-    cout << "Now a direct access to array data: ";
+    cout << "Now a direct access to array data: ";    //pointer directly to the array data
     double* dataPtr = temperatures.data();
     for(size_t i = 0; i < temperatures.size(); ++i)
         cout << *(dataPtr + i) << " ";
